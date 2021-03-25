@@ -1,0 +1,351 @@
+<%- include('block_inicio') %>
+<%- include('barra_menu') %>
+
+
+<!--Resto dispositivos-->
+<div class="row d-none d-sm-block">
+    <br><br>
+  <div class="row d-flex justify-content-center" >
+    <h2>CARGAR INFORME POR CRITERIOS</h2>
+  </div>
+  <br><br>
+  <div class="col-sm-12 col-md-12">
+      <div class="row d-flex justify-content-around p-3">
+        
+        <!--bOTONES CURSO-->
+        <div class="btn-group-vertical" style="width: 20%;" id="btn-container">
+         </div>
+         
+
+        
+        <div class="d-flex flex-column p-4" style="background:#6D89B2; border-radius: 15px;">
+
+          <div class="row">
+            <div class="col">
+              <h4 class="white">Calificar con Concepto</h4>
+              <button id="btn-concepto" class="btn btn-primary">Calificar</button>
+            </div>
+          </div>
+          
+        </div>
+
+        
+        
+      </div>
+      <br><br><br>
+      
+      <div class="d-flex justify-content-center">
+      <div class="" style="width: 70%;">
+        <table id="example" class="table table-bordered" style="text-align: center; 
+        background: rgb(209, 207, 207);">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>ALUMNO/A</th>
+                  <th>CURSO</th>
+                  <th>MATERIA</th>
+                  <th>ACCIÓN</th>
+              </tr>
+          </thead>
+          <tbody>
+          </tbody>
+      </table>
+  
+      </div>
+    </div>
+      
+  </div>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">CONCEPTOS CARGADOS</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="content_modal">
+      <h5>Comprención Lectora</h5>
+      <ul>
+        <li>Interpreta diferentes tipos de textos, en diversos formatos.</li><p id="cl1"></p>
+        <li>Identifica ideas principaies y secundarias de un texto.</li><p id="cl2"></p>
+        <li>Estabiece relaciones entre ideas y/o conceptos respecto de un teme.</li><p id="cl3"></p>
+        <li>Comprende consignas orales y escritas.</li><p id="cl4"></p>
+      </ul>
+
+      <br>
+      <h5>Producción de Textos Orales y Escritos</h5>
+      <ul>
+        <li>Redacta de manera autónoma un texto coherente y cohesivo.</li><p id="pdtoye1"></p>
+        <li>Resume un texto breve.</li><p id="pdtoye2"></p>
+        <li>Utiliza diferentes herramientas para organizar sus ideas(cuadros, diagramas, esquemas, mapas mentales, mapas conceptuales, etc.)</li><p id="pdtoye3"></p>
+        <li>Diagrama una exposición oral breve.</li><p id="pdtoye4"></p>
+      </ul>
+
+      <br>
+      <h5>Resolución de Problemas</h5>
+      <ul>
+        <li>Reconoce las variables de una situación problemática.</li><p id="rdp1"></p>
+        <li>Elabora conjeturas de acuerdo con los datos que presenta la situación.</li><p id="rdp2"></p>
+        <li>Plantea y explora diferentes estrategias de solución.</li><p id="rdp3"></p>
+        <li>Describe los pasos de resolución.</li><p id="rdp4"></p>
+        <li>Interpreta y evalua las posibles soluciones.</li><p id="rdp5"></p>
+      </ul>
+
+      <br>
+      <h5>Pensamiento Crítico</h5>
+      <ul>
+        <li>Elabora una argumentación autónoma en torno a situaciones complejas.</li><p id="pc1"></p>
+        <li>Identifica y reconose argumentos diferentes del suyo</li><p id="pc2"></p>
+        <li>Reconoce la validez o falacia de una afirmación.</li><p id="pc3"></p>
+        <li>ontra argumenta posicionamientos diferentes.</li><p id="pc4"></p>
+      </ul>
+
+      <br>
+      <h5>Habilidades Sociales - Trabajo con Otros</h5>
+      <ul>
+        <li>Manifesta actitudes propicias para trabajar con sus pares.</li><p id="hs1"></p>
+        <li>Demuestra solidaridad y empatía ente las personas que lo requieren.</li><p id="hs2"></p>
+        <li>Puede brindar o pedir ayuda a sus pares para elaborar sus producciones.</li><p id="hs3"></p>
+        <li>Participa en propuestas que requieran la conformación de equipos.</li><p id="hs4"></p>
+      </ul>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal2 -->
+<div class="modal fade" id="myModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">NOTA CARGADA</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="content_modal">
+        <h5 id="nota"></h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<br><br>
+<%- include('block_end') %>
+<style>
+.color-select{
+    color:gray;
+  }
+.cursor{
+    cursor: pointer;
+  }
+.fa-search:hover{
+    color: rgb(75, 129, 211);
+}
+.fa-trash:hover{
+  color: brown;
+}
+
+p{color: blue;}
+.selected{background: burlywood;}
+</style>
+
+<script>
+var id;
+var id_curso;
+var materia;
+var id_materia;
+let btnNota = document.getElementById('btn-nota')
+let nota = document.getElementById('nota')
+let btnConcepto = document.getElementById('btn-concepto')
+let id_combo = document.getElementById('idSelectAlum')
+let cl1 = document.getElementById('cl1')
+let cl2 = document.getElementById('cl2')
+let cl3 = document.getElementById('cl3')
+let cl4 = document.getElementById('cl4')
+let pdtoye1 = document.getElementById('pdtoye1')
+let pdtoye2 = document.getElementById('pdtoye2')
+let pdtoye3 = document.getElementById('pdtoye3')
+let pdtoye4 = document.getElementById('pdtoye4')
+let rdp1 = document.getElementById('rdp1')
+let rdp2 = document.getElementById('rdp2')
+let rdp3 = document.getElementById('rdp3')
+let rdp4 = document.getElementById('rdp4')
+let rdp5 = document.getElementById('rdp5')
+let pc1 = document.getElementById('pc1')
+let pc2 = document.getElementById('pc2')
+let pc3 = document.getElementById('pc3')
+let pc4 = document.getElementById('pc4')
+let hs1 = document.getElementById('hs1')
+let hs2 = document.getElementById('hs2')
+let hs3 = document.getElementById('hs3')
+let hs4 = document.getElementById('hs4')
+
+
+window.onload = ()=>{
+  $.ajax({
+    type:'GET',
+    url:'/cursosAsignados',
+    //data:{}
+    }).done(async function(res){
+          $.each(res,function(key,val){
+            $('#btn-container').append(`<button id_materia='${val.id_materia}' materia='${val.materia}' id='${val.curso}' class='btn btn-primary mb-1'>${val.curso + ' '+ val.materia}</button>`)
+          })//end each
+    }).fail(async function(err){
+      toastr.error('La Operacion NO Pudo Resolverse...', 'ERROR', { timeOut: 3000 })
+      await sleep(2000)
+      //window.location.reload()
+    })
+}//end
+
+//Muestra la tabla
+/*$('#example').DataTable({
+    ajax: "/conceptos",
+    language: {url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"},
+    order: [[ 2, "asc" ]],
+    columns: [
+            { "data": "_id" },
+            { "data": "alumno" },
+            { "data": "curso" },
+            { "data": "materia" },
+            {
+            "defaultContent": "<div class='d-flex justify-content-center'> <i  data-toggle='tooltip' data-placement='top' title='Ver' class='cursor fas fa-search fa-lg icon mr-4'></i> <i data-toggle='tooltip' data-placement='top' title='Borrar' class='cursor fa fa-trash fa-lg' aria-hidden='true'></i></div>"
+            }],
+})//end tabla*/
+
+//Click botones de cursos
+$('body').on( 'click', '.btn', function () {
+  id_curso = this.getAttribute("id")
+  materia = this.getAttribute("materia")
+  id_materia = this.getAttribute('id_materia')
+  limpiar()
+  Obj.cargarSelectConAjax('POST','/alumnos',{curso:id_curso,materia},'#idSelectAlum')
+})
+
+
+btnConcepto.onclick = () => {
+  
+  $.ajax({
+    type:'POST',
+    url:'/showpage',
+    data:{id_curso, materia, id_materia}
+    }).done(async function(res){
+      window.location.href = '/showconcept'
+      
+    }).fail(async function(err){
+      toastr.error('La Operacion NO Pudo Resolverse...', 'ERROR', { timeOut: 3000 })
+      await sleep(2000)
+      window.location.reload()
+    })
+
+}//end
+
+
+
+//Selecciona elementos en tabla Borrar
+$('#example tbody').on( 'click', '.fa-trash', function () {
+    id = $(this).parents("tr").find("td").eq(0).text()
+    
+    if (confirm("UD. BORRARÁ EL ELEMENTO SELECCIONADO. ¿DESEA HACERLO?")) {
+      Obj.ajaxConfigMsg('DELETE','/delete',{id}, 'SE BORRÓ CORRECTAMENTE',
+      [{code:401, msg:'ERROR ON SERVER: TIPO DE DATO INCORRECTO...'},
+      {code:402, msg:'ERROR ON SERVER: NO SE ENCONTRÓ ELEMENTO SELECCIONADO...'}])
+    } else {
+      return false
+    }
+})
+
+//Selecciona elementos en tabla Ver
+$('#example tbody').on( 'click', '.fa-search', function () {
+    id = $(this).parents("tr").find("td").eq(0).text()
+    
+    $.ajax({
+    type:'POST',
+    url:'/datosModal',
+    data:{id}
+    }).done(async function(res){
+      console.log(res)
+      if(res[0].nota === ''){
+        cl1.innerHTML = res[0].cl1
+        cl2.innerHTML = res[0].cl2
+        cl3.innerHTML = res[0].cl3
+        cl4.innerHTML = res[0].cl4
+        pdtoye1.innerHTML = res[0].pdtoye1
+        pdtoye2.innerHTML = res[0].pdtoye2
+        pdtoye3.innerHTML = res[0].pdtoye3
+        pdtoye4.innerHTML = res[0].pdtoye4
+        rdp1.innerHTML = res[0].rdp1
+        rdp2.innerHTML = res[0].rdp2
+        rdp3.innerHTML = res[0].rdp3
+        rdp4.innerHTML = res[0].rdp4
+        rdp5.innerHTML = res[0].rdp5
+        pc1.innerHTML = res[0].pc1
+        pc2.innerHTML = res[0].pc2
+        pc3.innerHTML = res[0].pc3
+        pc4.innerHTML = res[0].pc4
+        hs1.innerHTML = res[0].hs1
+        hs2.innerHTML = res[0].hs2
+        hs3.innerHTML = res[0].hs3
+        hs4.innerHTML = res[0].hs4
+        $('#myModal').modal('show')
+      }else{
+        nota.innerHTML ='Nota: '+res[0].nota
+        $('#myModal2').modal('show')
+      }
+      
+
+      
+    }).fail(async function(err){
+      toastr.error('La Operacion NO Pudo Resolverse...', 'ERROR', { timeOut: 3000 })
+      await sleep(2000)
+      //window.location.reload()
+    })
+
+    
+})
+
+
+
+
+
+
+
+
+
+//Funciones
+const limpiar = () => {
+  const $select = document.querySelector("#idSelectAlum");
+  for (let i = $select.options.length; i >= 0; i--) {
+    $select.remove(i);
+  }
+  //$select.innerHTML =  '<option selected disabled></option>'
+}
+
+function queCuatrimestreEs(){
+  let mes = new Date()
+  if((mes.getMonth() + 1) <= 7){
+    return '1'
+  }
+  if((mes.getMonth() + 1) >= 8){
+    return '2'
+  }
+}
+ </script>

@@ -1,0 +1,88 @@
+<%- include('block_inicio') %>
+<%- include('barra_menu') %>
+<div class="container">
+    
+  <!--Mobile first-->
+  <div class="d-block d-sm-none">
+    <br>
+      <h5>Solo Visible en PC</h5>
+    <br>
+  </div>
+
+  <!--Resto dispositivos-->
+  <div class="row d-none d-sm-block">
+      <br><br>
+    <div class="row d-flex justify-content-center" >
+      <h2>MENÚ ASESORÍA</h2>
+    </div>
+    <br><br>
+
+    <div class="row">
+      <div class="col-sm-4" style="display: flex; flex-direction: column;
+      align-items: center; justify-content: center;">
+          <img id="estadisticas" src="/img/Group 13.png" alt="" style="width: 30%; height: auto;">
+          <P class="mt-2">ESTADÍSTICAS</P>
+      </div>
+
+      <div class="col-sm-4" style="display: flex; flex-direction: column;
+      align-items: center; justify-content: center;">
+          <img id="observaciones" src="/img/Group 14.png" alt="" style="width: 30%; height: auto;">
+          <P class="mt-2">OBSERVACIONES</P>
+      </div>
+
+      <div class="col-sm-4 mt-4" style="display: flex; flex-direction: column;
+      align-items: center; justify-content: center;">
+          <img id="info" src="/img/iconinfo.png" alt="" style="width: 30%; height: auto;">
+          <P class="mt-2">INFO ALUMNOS</P>
+      </div>
+  </div>
+
+
+</div>
+
+<br><br>
+<%- include('block_end') %>
+
+
+<style>
+img{cursor:pointer;}
+
+
+
+</style>
+
+<script>
+let btnestadisticas = document.getElementById('estadisticas')
+let btnobsrvaciones = document.getElementById('observaciones')
+let btnInfo = document.getElementById('info')
+
+//Envia al usuario a pagina obs
+btnobsrvaciones.onclick = () => {
+  window.location = '/observaciones'
+}//end btn
+
+
+//Envia al usuario a estadisticas
+btnestadisticas.onclick = () => {
+  window.location = '/estadisticaspsicopagina'
+}//end btn
+
+
+
+btnInfo.onclick = () => {
+  window.location = '/infoalumnos'
+}//end btn
+ 
+
+   
+    
+
+
+
+
+
+
+
+
+  
+</script>

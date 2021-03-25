@@ -1,0 +1,56 @@
+<%- include('block_inicio') %>
+<%- include('barra_menu') %>
+<div class="container">
+
+  <!--Resto dispositivos-->
+  <div class="row d-none d-sm-block">
+      <br><br>
+    <div class="row d-flex justify-content-center" >
+      <h2>MENÚ PROFESORES</h2>
+    </div>
+    <br><br>
+
+    <div class="row">
+      <div class="col-sm-6" style="display: flex; flex-direction: column;
+      align-items: center; justify-content: center;">
+          <img id="estadisticas" src="/img/Group 13.png" alt="" style="width: 30%; height: auto;">
+          <P class="mt-2">ESTADÍSTICAS</P>
+      </div>
+
+      <div class="col-sm-6" style="display: flex; flex-direction: column;
+      align-items: center; justify-content: center;">
+          <img id="editar" src="/img/Group 12.png" alt="" style="width: 30%; height: auto;">
+          <P class="mt-2">EDITAR INFORMES</P>
+      </div>
+  </div>
+
+
+</div>
+
+<br><br>
+<%- include('block_end') %>
+
+
+<style>
+img{cursor:pointer;}
+
+
+
+</style>
+
+<script>
+let btnestadisticas = document.getElementById('estadisticas')
+let btneditar = document.getElementById('editar')
+
+
+//Envia al usuario a cargar por conceptos
+btneditar.onclick = () => {
+  window.location = '/showpagecriterio'
+}//end btn
+
+
+//Envia al usuario a cargar por notas
+btnestadisticas.onclick = () => {
+  window.location = '/shownote'
+}//end btn
+</script>

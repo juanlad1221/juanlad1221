@@ -1,0 +1,110 @@
+<%- include('block_inicio') %>
+<%- include('barra_menu') %>
+<div class="container">
+    
+  
+  <!--Resto dispositivos-->
+  <div class="row d-none d-sm-block">
+      <br><br>
+    <div class="row d-flex justify-content-center" >
+      <h2>CARGAR NOTA</h2>
+    </div>
+    <br><br>
+
+    <div class="row p-2 white" style="background: rgb(46, 71, 117); border-radius: 20px;">
+      <div class="col">
+        <h5 id="alumno" alumno="<%= result[0].last_name%>">Alumno: <%= result[0].last_name + ' '+result[0].name%></h5>
+        <h5 id="materia" materia="<%= materia%>" id_materia="<%= id_materia%>">Materia: <%= materia%></h5>
+        <h5 id="curso" curso = "<%= result[0].curso%>">Curso: <%= result[0].curso%></h5>
+        <h5 id="_id" _id="<%= result[0]._id%>">Id: <%= result[0]._id%></h5>
+      </div>
+    </div>
+
+    <br><br>
+     <div class="alert alert-info" role="alert">
+      <h4>INFORMACIÓN:</h4>
+      <P>La nota debe estar en el rango de 6 a 10.</P>
+    </div>
+
+    <br><br>
+    <div class="row p-3" style="background: cadetblue;">
+      <div class="input-group" style="width: 10%;">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">Nota</span>
+        </div>
+        <input id="txt" type="text" autocomplete="off" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+      <button id="btn" class="btn btn-primary ml-3">Cargar</button>
+    </div>
+    
+  </div>
+
+</div>
+<br><br><br><br>
+<%- include('block_end') %>
+
+
+<style>
+
+</style>
+
+<script>
+let btn = document.getElementById('btn')
+let txt = document.getElementById('txt')
+let alumno = document.getElementById('alumno')
+let materia = document.getElementById('materia')
+let curso = document.getElementById('curso')
+let id = document.getElementById('_id')
+
+btn.onclick = () => {
+  if(!FrontValidate.input('txt',['presence','no_letters','NO_LETTERS','no_space',{max:2}],'windows')){
+    
+    if(txt.value > 10 || txt.value < 6){
+      alert('ATENCION: EL VALOR NUMERICO DEBE ESTAR ENTRE 6 Y 10...')
+      window.location.reload()
+    }
+    
+    obj = {
+      id_criterio:'nota',
+      id_alumno: id.getAttribute('_id'),
+      last_name: alumno.getAttribute('alumno'),
+      curso:curso.getAttribute('curso'),
+      materia: materia.getAttribute('materia'),
+      id_materia: materia.getAttribute('id_materia'),
+      nota:txt.value,
+      value:''
+    }
+
+    //envio
+    $.ajax({
+    type:'POST',
+    url:'/prosesar',
+    data:{obj}
+    }).done(async function(res){
+      toastr.success('La Operacion se Realizó Correctamente...', 'OK', { timeOut: 3000 })
+      await sleep(2000)
+      window.location.href = '/shownote'
+    }).fail(async function(err){
+      toastr.error('La Operacion NO Pudo Resolverse...', 'ERROR', { timeOut: 3000 })
+      await sleep(2000)
+      window.location.reload()
+    })
+
+
+  }//end
+}//end
+   
+
+  
+
+
+
+
+
+
+
+
+
+
+
+</script>
