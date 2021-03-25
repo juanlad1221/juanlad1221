@@ -77,7 +77,7 @@ router.get('/profes', IsAuthenticated ,async function (req, res) {
 router.get('/alumnos', IsAuthenticated ,async function (req, res) {
   
 
-  res.redirect('https://app.example.io');
+  res.redirect('https://sites.google.com/view/test1221qw/inicio');
   /*res.status(200).render('../views/alumnos',{user: req.user.show_name,
     sexo:req.user.sexo,tipo:req.user.tipo})*/
 })//end get
