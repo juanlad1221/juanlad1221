@@ -77,18 +77,14 @@ router.get('/profes', IsAuthenticated ,async function (req, res) {
 router.get('/alumnos', IsAuthenticated ,async function (req, res) {
   
 
-  
-  res.status(200).render('../views/alumnos',{user: req.user.show_name,
-    sexo:req.user.sexo,tipo:req.user.tipo})
+  res.redirect('https://sites.google.com/view/test1221qw/inicio');
+  /*res.status(200).render('../views/alumnos',{user: req.user.show_name,
+    sexo:req.user.sexo,tipo:req.user.tipo})*/
 })//end get
 
-router.get('/conceptos', IsAuthenticated ,async function(req,res){
-  let usuario = req.user.id
- 
-  let result = await Alumnos_Conceptos2.where({user:ObjectId(usuario)})
-  
-  let dato = {data:result}
-  res.status(200).json(dato)
+router.get('/salir' ,async function(req,res){
+  res.status(200).render('../views/salir',{user: req.user.show_name,
+    sexo:req.user.sexo,tipo:req.user.tipo})
 })//end get
 
 router.post('/alumnos', IsAuthenticated ,async function (req, res) {
